@@ -13,7 +13,6 @@ jobs:
     outputs:
       release_needed: ${{ steps.check.outputs.release_needed }}
     runs-on: ubuntu-20.04
-    needs: lint
     strategy:
       fail-fast: false
       matrix:
