@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Check if latest commit in clio branches each has a release package Clio
+    name: Make some packages
     outputs:
       release_needed: ${{ steps.check.outputs.release_needed }}
     runs-on: ubuntu-20.04
@@ -33,5 +33,5 @@ jobs:
       - name: Artifact packages
         uses: actions/upload-artifact@v3
         with:
-          # name: clio_${{ matrix.type.suffix }}_packages
+          name: clio_${{ matrix.type.suffix }}_packages
           path: ${{ github.workspace }}/*.${{ matrix.type.suffix }}
