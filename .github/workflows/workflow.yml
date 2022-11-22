@@ -10,8 +10,6 @@ on:
 jobs:
   build:
     name: Make some packages
-    outputs:
-      release_needed: ${{ steps.check.outputs.release_needed }}
     runs-on: ubuntu-20.04
     strategy:
       fail-fast: false
@@ -33,5 +31,5 @@ jobs:
       - name: Artifact packages
         uses: actions/upload-artifact@v3
         with:
-          name: clio_${{ matrix.type.suffix }}_packages
+          name: ${{ github.repository }}${{ matrix.type.suffix }}_packages
           path: ${{ github.workspace }}/*.${{ matrix.type.suffix }}
