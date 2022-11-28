@@ -32,10 +32,13 @@ jobs:
 
       - name: Build
         shell: bash
+        id: build
         run: |
           touch cool.${{ matrix.type.suffix }}
+          echo "pkg_sha=$(sha256 cool.${{ matrix.type.suffix }})" >> $GITHUB_OUTPUT
+
       - name: Artifact packages
         uses: actions/upload-artifact@v3
         with:
-          name: test_repo-${{ steps.vars.outputs.sha_short }}-s${{ matrix.type.suffix }}_packages
+          name: test_repo-${{ steps.vars.outputs.sha_short }}-${{ steps.build.outputs.pkg_shas }}-s${{ matrix.type.suffix }}_packages
           path: ${{ github.workspace }}/*.${{ matrix.type.suffix }}
