@@ -35,7 +35,7 @@ jobs:
         id: build
         run: |
           touch cool.${{ matrix.type.suffix }}
-          echo "pkg_sha=$(sha256 cool.${{ matrix.type.suffix }})" >> $GITHUB_OUTPUT
+          echo "pkg_sha=$(sha256sum cool.${{ matrix.type.suffix }})" >> $GITHUB_OUTPUT
 
       - name: Artifact packages
         uses: actions/upload-artifact@v3
