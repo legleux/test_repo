@@ -16,7 +16,7 @@ jobs:
       matrix:
         type:
           - suffix: deb
-            image: rippleci/clio-deb-builder:2022-09-17
+            image: rippleci/clio-dpkg-builder:2022-09-17
             client: apt-get
           - suffix: rpm
             image: rippleci/clio-rpm-builder:2022-09-17
