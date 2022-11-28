@@ -41,7 +41,7 @@ jobs:
         run: |
           filename=cool.${{ matrix.type.suffix }}
           cat /etc/os-release | head -1 > ${filename}
-          echo "pkg_sha=$(sha256sum s${filename})" >> $GITHUB_OUTPUT
+          echo "pkg_sha=$(sha256sum ${filename})" >> $GITHUB_OUTPUT
 
       - name: Artifact packages
         uses: actions/upload-artifact@v3
