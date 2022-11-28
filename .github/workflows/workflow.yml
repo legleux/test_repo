@@ -16,10 +16,10 @@ jobs:
       matrix:
         type:
           - suffix: deb
-            image: ubuntu:20.04
+            image: rippleci/clio-deb-builder:2022-09-17
             client: apt-get
           - suffix: rpm
-            image: centos:7
+            image: rippleci/clio-rpm-builder:2022-09-17
             client: rpm
     container:
       image: ${{ matrix.type.image }}
