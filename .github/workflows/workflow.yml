@@ -30,8 +30,6 @@ jobs:
       - name: Set outputs
         id: vars
         run: |
-          # cd test_repo
-          ls -l
           git config --global --add safe.directory /__w/test_repo/test_repo
           echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - name: Check outputs
@@ -41,9 +39,9 @@ jobs:
         shell: bash
         id: build
         run: |
-          cat /etc/os-release | head -1 > cool.${{ matrix.type.suffix }}
-          echo "pkg_sha=$(sha256sum cool.${{ matrix.type.suffix }})" >> $GITHUB_OUTPUT
-          echo $GITHUB_OUTPUT
+          filename = cool.${{ matrix.type.suffix }}
+          cat /etc/os-release | head -1 > ${filename}
+          echo "pkg_sha=$(sha256sum s${filename})" >> $GITHUB_OUTPUT
 
       - name: Artifact packages
         uses: actions/upload-artifact@v3
