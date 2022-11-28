@@ -30,7 +30,8 @@ jobs:
       - name: Set outputs
         id: vars
         run: |
-          cd ${{ github.repository }}
+          cd test_repo
+          ls -l
           echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - name: Check outputs
         run: echo
