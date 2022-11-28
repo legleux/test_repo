@@ -32,6 +32,7 @@ jobs:
         run: |
           # cd test_repo
           ls -l
+          git config --global --add safe.directory /__w/test_repo/test_repo
           echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - name: Check outputs
         run: echo
