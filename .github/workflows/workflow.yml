@@ -41,7 +41,7 @@ jobs:
         run: |
           filename=cool.${{ matrix.type.suffix }}
           echo -en "${{ steps.vars.outputs.sha_short }}\n" > ${filename}
-          cat /etc/os-release | head -1 > ${filename}
+          cat /etc/os-release | head -1 >> ${filename}
           echo "pkg_sha=$(sha256sum ${filename}  | cut  -d ' ' -f 1 )" >> $GITHUB_OUTPUT
 
       - name: Artifact packages
